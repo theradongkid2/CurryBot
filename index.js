@@ -51,81 +51,6 @@ client.on("ready", () => {
 });
 
 
-client.on("message", async message => {
-  if(message.channel.id === "763567159871406080"){
-    counter++;
-    console.log(counter);
-    let x = randomise(5)
-    if(counter % x === 0 && lastUser !== "819852916172914699") message.channel.send("mm");
-    if(message.content !== "mm"){
-      message.delete()
-      
-      counter--
-      if(message.author.bot) return;
-      client.users.get(message.author.id).send(`You sent a non mm in mm channel!!! This is your first warning :angry:!`);
-      return
-    }
-    if(message.author.id === lastUser){
-      message.delete()
-      counter--
-      if(message.author.bot) return;
-      client.users.get(message.author.id).send(`You pulled a double mm!!! This is your first warning :angry:!`);
-      return
-    }
-    lastUser = message.author.id;
-  }
-})
-
-client.on("message", async message => {
-  if(message.author.bot) return;
-  if(tommyShut === false) return;
-  if(message.author.id === "354170428727754753"){
-    if(message.channel.id === "763567159871406080") return;
-    message.reply("Shut Up")
-    client.users.get(message.author.id).send(`Management would kindly request for you to shut up. :)`);
-  }
-})
-
-client.on("message", async message => {
-  if(message.author.bot) return;
-  if(tommySaid === false) return;
-  if(message.author.id === "354170428727754753"){
-    if(message.channel.id === "763567159871406080") return;
-    var messageContent = message.content;
-    var str = messageContent;
-    let temp = str.split(" ").map(translatePigLatin);  
-    var answer = temp.join(" ").toLowerCase();
-      
-    message.channel.send(`tommy said: ${answer}`);
-
-    
-    function translatePigLatin(str) {
-      //gives us something to work with in array form
-      let newStr = [...str];
-      //regex to test words with for vowels
-      let vowels = /[aeiou]/gi;
-      
-      //first line determines if the first character in the word is a vowel
-    if (vowels.test(str[0]) === true) {
-      return str + "way"; 
-    } else if (str.search(vowels) > 0) { //if the word has a vowel but not the first letter
-      var temp = str.slice(0, str.search(vowels)); //get all consonants to the first vowel
-      newStr.push(temp, "ay"); //pushes those consonants and "ay" to the end of the word
-      for (var i = 0; i < str.search(vowels); i++) { // for loop to remove consonants off the array
-        newStr.shift();
-      }
-      return newStr.join("");
-      
-    }
-    
-    if (vowels.test(str) === false) {
-      
-      return str + "ay";
-    }
-    }
-      
-  }
-})
 
 client.on("message", async message => {
   if(message.author.bot) return;
@@ -153,9 +78,6 @@ client.on("message", async message => {
               value: "Use e!help image"
             },
               {
-                name: `Tommy Diao Torture Commands`,
-                value: `Use e!help diao`
-                },{
                   name: `Miscellaneous Commands`,
                   value: `Use e!help misc`
                   },
@@ -221,27 +143,6 @@ client.on("message", async message => {
                     name: `Quote`,
                     value: `Usage: e!quote [sends a random quote]`
                     }
-        ],
-        timestamp: new Date(),
-          footer: {
-              text: 'CurryBot by Joshua Koh',
-              icon_url: 'https://cdn.discordapp.com/attachments/821685934302953505/821700650366009394/9k.png',
-          },
-      };
-      message.channel.send({ embed: warnEmbed });
-    } else if(args[1] === "diao"){
-      const warnEmbed = {
-        color: 0x964B00,
-        title: `Help - Tommy Diao Torture Commands`,
-        fields: [
-          {
-          name: `Tommy Shut Up (Admins Only)`,
-          value: `Usage: e!tommyshut [Responds with @RA1N, Shut Up whenever the man speaks. By default off.]`
-          },
-          {
-            name: `Tommy Translation (Admins Only)`,
-            value: `Usage: e!tommysaid [Responds with a piglatin translation of the man's message. By default off]`
-            }
         ],
         timestamp: new Date(),
           footer: {
@@ -323,7 +224,7 @@ client.on("message", async message => {
       m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
   };
   if(command === "purge") {
-    if(!message.member.roles.some(r=>["・ ── ・ Emperor ・ ── ・", "・ ── ・ Empress ・ ── ・", "・ ── ・ Archdukes ・ ── ・", "Ruse"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["Admin", "Mods"].includes(r.name)) )
         return message.reply("Sorry, you don't have permissions to use this!");
       const deleteCount = parseInt(args[0], 10);
       if(!deleteCount || deleteCount < 2 || deleteCount > 10000)
@@ -334,7 +235,7 @@ client.on("message", async message => {
     }
   
      if(command === "kick") {
-      if(!message.member.roles.some(r=>["・ ── ・ Emperor ・ ── ・", "・ ── ・ Empress ・ ── ・", "・ ── ・ Archdukes ・ ── ・", "Ruse"].includes(r.name)) )
+      if(!message.member.roles.some(r=>["Admin", "Mods"].includes(r.name)) )
         return message.reply("Sorry, you don't have permissions to use this!");
       let member = message.mentions.members.first() || message.guild.members.get(args[0]);
       if(!member)
@@ -351,7 +252,7 @@ client.on("message", async message => {
   
   
     if(command === "ban") {
-      if(!message.member.roles.some(r=>["・ ── ・ Emperor ・ ── ・", "・ ── ・ Empress ・ ── ・", "・ ── ・ Archdukes ・ ── ・", "Ruse"].includes(r.name)) )
+      if(!message.member.roles.some(r=>["Admin", "Mods"].includes(r.name)) )
         return message.reply("Sorry, you don't have permissions to use this!");
       
       let member = message.mentions.members.first();
@@ -370,7 +271,7 @@ client.on("message", async message => {
   
 
   if(command === "warn"){
-    if(!message.member.roles.some(r=>["・ ── ・ Emperor ・ ── ・", "・ ── ・ Empress ・ ── ・", "・ ── ・ Archdukes ・ ── ・", "Ruse"].includes(r.name)))
+    if(!message.member.roles.some(r=>["Admin", "Mods"].includes(r.name)))
         return message.reply("Sorry, you don't have permissions to use this!");
   
     let moderator = message.member.user
@@ -460,30 +361,6 @@ client.on("message", async message => {
         messageReaction.react('👍');
         messageReaction.react('👎'); 
     });
-  }
-
-  if(command === "tommyshut"){
-    if(!message.member.roles.some(r=>["・ ── ・ Emperor ・ ── ・", "・ ── ・ Empress ・ ── ・", "・ ── ・ Archdukes ・ ── ・", "Ruse"].includes(r.name)) )
-        return message.reply("Sorry, you don't have permissions to use this!");
-    if(tommyShut === true){
-      tommyShut = false
-      message.channel.send("Tommy can now speak without being told to shut up.")
-    } else  if (tommyShut === false){
-      tommyShut = true
-      message.channel.send("Tommy can now shut up.")
-    }
-  }
-
-  if(command === "tommysaid"){
-    if(!message.member.roles.some(r=>["・ ── ・ Emperor ・ ── ・", "・ ── ・ Empress ・ ── ・", "・ ── ・ Archdukes ・ ── ・", "Ruse"].includes(r.name)) )
-        return message.reply("Sorry, you don't have permissions to use this!");
-    if(tommySaid === false){
-      tommySaid = true
-      message.channel.send("I will translate tommy's speech from now on.")
-    } else  if (tommySaid === true){
-      tommySaid = false
-      message.channel.send("I will shut up now.")
-    }
   }
 
   if(command === "quote"){
@@ -689,7 +566,7 @@ client.on("message", async message => {
   }
 
   if(command === "executeorder69"){
-    if(!message.member.roles.some(r=>[ "・ ── ・ Emperor ・ ── ・", "・ ── ・ Empress ・ ── ・", "・ ── ・ Archdukes ・ ── ・", "Ruse"].includes(r.name)) )
+    if(!message.member.roles.some(r=>[ "Admin", "Mods"].includes(r.name)) )
         return message.reply("Sorry, you don't have permissions to use this!");
     const Role = message.mentions.roles.first();
     message.mentions.members.forEach(member => {
