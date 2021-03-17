@@ -47,7 +47,6 @@ client.on("ready", () => {
     client.guilds.forEach((guild) => {
         console.log(" - " + guild.name);
     });
-  scheduleWarning('19:45', function() { client.channels.get("699967983136800890").send("hi"); });
 });
 
 
