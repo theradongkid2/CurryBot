@@ -66,19 +66,19 @@ client.on("message", async message => {
         fields: [
           {
           name: `Moderator Commands`,
-          value: `Use e!help mod`
+          value: `Use c!help mod`
           },
           {
             name: `Fun Commands`,
-            value: `Use e!help fun`
+            value: `Use c!help fun`
             },
             {
               name: "Image Commands",
-              value: "Use e!help image"
+              value: "Use c!help image"
             },
               {
                   name: `Miscellaneous Commands`,
-                  value: `Use e!help misc`
+                  value: `Use c!help misc`
                   },
         ],
         timestamp: new Date(),
@@ -95,19 +95,19 @@ client.on("message", async message => {
         fields: [
           {
           name: `Kick (Admins Only)`,
-          value: `Usage: e!kick @user reason [used to kick members]`
+          value: `Usage: c!kick @user reason [used to kick members]`
           },
           {
             name: `Ban (Admins Only)`,
-            value: `Usage: e!ban @user reason [used to ban members]`
+            value: `Usage: c!ban @user reason [used to ban members]`
             },
             {
               name: `Warn (Admins Only)`,
-              value: `Usage: e!warn @user reason [used to warn members]`
+              value: `Usage: c!warn @user reason [used to warn members]`
               },
               {
                 name: `Purge (Admins Only)`,
-                value: `Usage: e!purge number (1-100) [used to clear/delete an amount of messages]`
+                value: `Usage: c!purge number (1-100) [used to clear/delete an amount of messages]`
                 },
         ],
         timestamp: new Date(),
@@ -124,23 +124,23 @@ client.on("message", async message => {
         fields: [
           {
             name: `Useless Fact`,
-            value: `Usage: e!fact [sends a random useless fact]`
+            value: `Usage: c!fact [sends a random useless fact]`
             },
           {
             name: `Ship`,
-            value: `Usage: e!ship person1 person2 [sends percentage of compatibility between two people/items]`
+            value: `Usage: c!ship person1 person2 [sends percentage of compatibility between two people/items]`
             },
           {
             name: `Meme`,
-            value: `Usage: e!meme [sends a random meme]`
+            value: `Usage: c!meme [sends a random meme]`
             },
             {
               name: `Say`,
-              value: `Usage: e!say a sentence [used to repeat a message, and delete the commanding message (looks like bot speaks)]`
+              value: `Usage: c!say a sentence [used to repeat a message, and delete the commanding message (looks like bot speaks)]`
               },
                   {
                     name: `Quote`,
-                    value: `Usage: e!quote [sends a random quote]`
+                    value: `Usage: c!quote [sends a random quote]`
                     }
         ],
         timestamp: new Date(),
@@ -157,15 +157,15 @@ client.on("message", async message => {
         fields: [
           {
             name: `Ping`,
-            value: `Usage: e!ping [used to show latency/ping.]`
+            value: `Usage: c!ping [used to show latency/ping.]`
             },
             {
               name: `Poll`,
-              value: `Usage: e!poll a question [sends a message with that question, with reacting with a thumbs up and down for a poll]`
+              value: `Usage: c!poll a question [sends a message with that question, with reacting with a thumbs up and down for a poll]`
               },
             {
               name: `User Statistics`,
-              value: `Usage: e!userstats @user [shows a user's avatar, status and join/creation dates.]`
+              value: `Usage: c!userstats @user [shows a user's avatar, status and join/creation dates.]`
               },
         ],
         timestamp: new Date(),
@@ -182,15 +182,15 @@ client.on("message", async message => {
         fields: [
           {
             name: `Birb`,
-            value: `Usage: e!birb [sends a random bird picture]`
+            value: `Usage: c!birb [sends a random bird picture]`
             },
           {
           name: `Shiba`,
-          value: `Usage: e!shiba [sends a random shiba inu picture]`
+          value: `Usage: c!shiba [sends a random shiba inu picture]`
           },
           {
             name: `Cat`,
-            value: `Usage: e!cat [sends a random cat picture]`
+            value: `Usage: c!cat [sends a random cat picture]`
             },
         ],
         timestamp: new Date(),
